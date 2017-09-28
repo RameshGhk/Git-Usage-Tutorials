@@ -15,6 +15,9 @@ Create new git project using below command
 $ git init Git-Usage-Tutorials	
 # git init is the command to create new project 
 #Git-Usage-Tutorials is the name of the project
+you will see below message
+Initialized empty Git repository in C:/Users/HP/Desktop/GitProjects/Git-Usage-Tutorials/.git/
+
 
 Cross check whether the project is created using ls command
 
@@ -63,7 +66,10 @@ Step7 : to commit the newly created file use
 $git commit
 #new text file will open in case of windows to add commit message
 #in case of mac or Linux it will navogate to the editor(vim/nano)
-#Add commit message, save and exit
+#Add commit message, save and exit.
 
 ************************************************************************************************************************************************
-Step8 : git push
+Step8 : to add the file to the remote repository that is github use git push
+$git push
+
+#Check in your github account 
