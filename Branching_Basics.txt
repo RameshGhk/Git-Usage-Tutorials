@@ -1,0 +1,60 @@
+****Doing modifications directly on master branch is not a good practice. So best practice is to create branches and modify the content.
+Once you feel the sub branch is stable then you can integrate the changes to master branch.****
+
+This tutorials is about creating branches
+Navigate to the git local repository 
+
+********************************************************************************************************************************************
+Stept1 : Check for status
+$ git status
+#You will see the below message
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+********************************************************************************************************************************************
+step2:
+#check for branches in your local repository. You will see below message that you are on master branch
+$ git branch -a
+* master
+  remotes/origin/master
+
+********************************************************************************************************************************************
+
+Step3: To create newbranch
+$ git branch newbranch
+
+#check for branches again, you will see new branch is created but still you are pointed to master branch(*mark before the master)
+$ git branch -a
+* master
+  newbranch
+  remotes/origin/master
+
+********************************************************************************************************************************************
+Step4 : To switch to new branch
+$ git checkout newbranch
+#you will see the below message
+Switched to branch 'newbranch'
+
+#check for branches again, you will see that you are pointed to new branch now(observe the * mark before the newbranch)
+$ git branch -a
+  master
+* newbranch
+  remotes/origin/master
+
+********************************************************************************************************************************************
+***To switch back to master branch***
+
+$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+
+********************************************************************************************************************************************
+***To delete the new branch***
+$ git branch -d newbranch
+Deleted branch newbranch (was 4fbfbd0).
+
+$ git branch -a
+* master
+  remotes/origin/master
+
+
