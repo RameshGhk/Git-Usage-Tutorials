@@ -1,0 +1,116 @@
+
+****This tutorials is about creating fast forward merge***
+This is useful when there is nothing changed in the master branch before the merge
+
+Step1: Navigate to the local repository
+
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects (master)
+$ cd Git-Usage-Tutorials/
+
+#Check for git status
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+
+*********************************************************************************************
+Step2 : Create new branch
+
+#Here I am switching to new branch before creating.
+
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (master)
+
+$ git checkout -b New_Branch  #-b for new branch creating
+
+#You will see the below message that means new branch is created and switched to new branch
+
+Switched to a new branch 'New_Branch'
+
+#Check for branches, you will see that you are pointed to the newly created branch
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (New_Branch)
+$ git branch -a
+* New_Branch
+  master
+  remotes/origin/master
+
+*********************************************************************************************
+Step3 : Add text file Fast_forward_merge.txt
+
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (New_Branch)
+$ notepad++.exe Fast_forward_merge.txt
+
+#Check for git status
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (New_Branch)
+$ git status
+On branch New_Branch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        Fast_forward_merge.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+#Add the file
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (New_Branch)                           
+$ git add Fast_forward_merge.txt
+
+*********************************************************************************************
+Step4: commit the new file
+
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (New_Branch)                           
+$ git commit -am "adding file to new branch"
+[New_Branch 2a737ec] adding file to new branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 Fast_forward_merge.txt
+
+#Check for git log
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (New_Branch)                           
+$ git log --oneline --decorate
+2a737ec (HEAD -> New_Branch) adding file to new branch
+24845aa (origin/master, master) Adding read Me file on Git tutorials
+
+*********************************************************************************************
+Step5: merge the newly added file to master branch
+
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (New_Branch)                           
+$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (master)
+$ git merge New_Branch
+Updating 24845aa..2a737ec
+Fast-forward
+ Branching.html | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 Branching.html
+
+#Check for log again
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (master)
+$ git log --oneline --graph --decorate
+* 2a737ec (HEAD -> master, New_Branch) adding file to new branch
+
+#Check for branches
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (master)
+$ git branch
+  New_Branch
+* master
+
+*********************************************************************************************
+*** To delete the newly created branch after merge***
+
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (master)
+$ git branch -d New_Branch
+Deleted branch New_Branch (was 2a737ec).
+
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (master)
+$ git branch
+* master
+#Check again git log
+HP@DESKTOP-S094UKO MINGW64 ~/Desktop/GitProjects/Git-Usage-Tutorials (master)
+$ git log --oneline --graph --decorate
+* 2a737ec (HEAD -> master) adding file to new branch
+
